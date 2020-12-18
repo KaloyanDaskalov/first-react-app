@@ -1,0 +1,8 @@
+.Background {
+  --magnolia: #fffaff;
+  height: 100vh;
+  background-color: var(--magnolia);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,96 @@
+.Container {
+  --magnolia: #fffaff;
+  --crayola: #3e92cc;
+  --cadet: #2d3142;
+  --sienna: #ee6c4d;
+  width: 90vw;
+  max-width: 25rem;
+  background-color: #fff;
+  box-shadow: 5px 5px 15px 0px #000000;
+  color: var(--cadet);
+  border-radius: 0.5rem;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+.Header {
+  padding: 2rem;
+}
+
+.Heading {
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.HeaderLink {
+  text-decoration: none;
+  color: var(--crayola);
+}
+
+.HeaderLink:hover {
+  text-decoration: underline;
+}
+
+.Message {
+  margin-top: 1rem;
+  color: var(--sienna);
+  /* visibility: hidden; */
+}
+
+.Form {
+  width: 70%;
+  padding: 1rem 0 4rem 0;
+  margin: auto;
+}
+
+.Input,
+.Btn {
+  display: block;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.Input {
+  border: none;
+  border-bottom: 2px solid var(--crayola);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.Input:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.Input::placeholder {
+  font-style: italic;
+  /* font-weight: bold; */
+  color: var(--cadet);
+}
+
+Input:focus,
+.Btn:focus {
+  outline: none;
+}
+
+.Btn {
+  background-color: var(--crayola);
+  border: 1px solid var(--crayola);
+  border-radius: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: var(--cadet);
+  transition: all 0.3s linear;
+}
+
+.Btn:hover {
+  background-color: transparent;
+  color: var(--crayola);
+}
+
+.Error {
+  border-bottom: 2px solid var(--sienna);
+}

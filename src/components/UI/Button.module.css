@@ -1,0 +1,22 @@
+.Btn {
+  --crayola: #3e92cc;
+  background-color: var(--crayola);
+  border: 1px solid var(--crayola);
+  border-radius: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: var(--cadet);
+  transition: all 0.3s linear;
+  cursor: pointer;
+  padding: 0.75rem 2rem;
+}
+
+.Btn:focus {
+  outline: none;
+}
+
+.Btn:hover {
+  background-color: transparent;
+  color: var(--crayola);
+}

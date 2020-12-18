@@ -1,0 +1,30 @@
+.Input {
+  --crayola: #3e92cc;
+  --cadet: #2d3142;
+  --sienna: #ee6c4d;
+  display: block;
+  padding: 0.75rem 0.5rem;
+  /* cursor: pointer; */
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--crayola);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.Input:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.Input::placeholder {
+  font-style: italic;
+  color: var(--cadet);
+}
+
+Input:focus {
+  outline: none;
+}
+
+.Error {
+  border-bottom: 2px solid var(--sienna);
+}
