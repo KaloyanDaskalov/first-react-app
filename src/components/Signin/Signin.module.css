@@ -36,7 +36,11 @@
 .Message {
   margin-top: 1rem;
   color: var(--sienna);
-  /* visibility: hidden; */
+  visibility: hidden;
+}
+
+.Show {
+  visibility: visible;
 }
 
 .Form {
