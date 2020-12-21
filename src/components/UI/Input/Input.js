@@ -4,12 +4,12 @@ import classes from './Input.module.css';
 const input = (props) => {
     const classList = [classes.Input];
 
-    if (props.class) {
+    if (props.showError) {
         classList.push(classes.Error);
     }
 
     return (
-        <input className={classList.join(' ')} type={props.type} placeholder={props.placeholder} />
+        <input className={classList.join(' ')} onChange={props.getValue}  {...props.attributes} />
     );
 }
 

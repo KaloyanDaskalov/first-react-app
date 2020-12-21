@@ -1,9 +1,9 @@
 import React from "react";
-import Signup from "./Signup/Signup";
-import Signin from "./Signin/Signin";
+import Signup from "./Forms/Signup";
+import SignIn from "./Forms/SignIn";
 import classes from './App.module.css';
 
-const app = () => (<div className={classes.Background}><Signin /></div>);
+const app = () => (<div className={classes.Background}><Signup /></div>);
 
 export default app;
 // class App extends Component {

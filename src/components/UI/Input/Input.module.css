@@ -1,10 +1,6 @@
 .Input {
-  --crayola: #3e92cc;
-  --cadet: #2d3142;
-  --sienna: #ee6c4d;
   display: block;
   padding: 0.75rem 0.5rem;
-  /* cursor: pointer; */
   width: 100%;
   border: none;
   border-bottom: 2px solid var(--crayola);

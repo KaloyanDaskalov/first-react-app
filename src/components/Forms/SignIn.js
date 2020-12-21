@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import classes from './Signin.module.css';
-import Button from '../UI/Button';
+import classes from './Forms.module.css';
+import Button from '../UI/Button/Button';
+import Input from '../UI/Input/Input';
 
-class Signin extends Component {
+class SignIn extends Component {
 
     state = {
         emailValue: '',
         passValue: '',
         emailError: false,
         passError: false,
-        errorMessage: 'error'
+        errorMessage: 'Password must be 4 to 10 characters'
     }
 
     submitHandler = (event) => {
@@ -17,7 +18,7 @@ class Signin extends Component {
         if (this.state.emailValue < 1) {
             this.setState({ emailError: true, errorMessage: 'Invalid Email' });
         } else {
-            this.setState({ emailError: false, errorMessage: 'error' });
+            this.setState({ emailError: false, errorMessage: 'Password must be 4 to 10 characters' });
         }
     }
 
@@ -37,7 +38,7 @@ class Signin extends Component {
 
         if (this.state.emailError) classEmail.push(classes.Error);
         if (this.state.passError) classPassword.push(classes.Error);
-        if (this.state.errorMessage !== 'error') classMessage.push(classes.Show);
+        if (this.state.errorMessage !== 'Password must be 4 to 10 characters') classMessage.push(classes.Show);
 
         return (
             <div className={classes.Container} >
@@ -49,8 +50,8 @@ class Signin extends Component {
                     <p className={classMessage.join(' ')}>{this.state.errorMessage}</p>
                 </header>
                 <form className={classes.Form} onSubmit={this.submitHandler}>
-                    <input className={classEmail.join(' ')} type="text" placeholder="Email" onChange={this.emailHandler} value={this.state.emailValue} />
-                    <input className={classPassword.join(' ')} type="password" placeholder="Password" onChange={this.passwordHandler} value={this.state.passValue} />
+                    <Input getValue={(e) => this.emailHandler(e)} showError={this.state.emailError} attributes={{ type: 'text', placeholder: 'Email' }} />
+                    <Input getValue={(e) => this.passwordHandler(e)} showError={this.state.passError} attributes={{ type: 'password', placeholder: 'Password' }} />
                     <Button>Sign In</Button>
                 </form>
             </div>
@@ -58,4 +59,4 @@ class Signin extends Component {
     }
 }
 
-export default Signin;
+export default SignIn;

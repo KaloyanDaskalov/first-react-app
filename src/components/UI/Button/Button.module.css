@@ -1,5 +1,4 @@
 .Btn {
-  --crayola: #3e92cc;
   background-color: var(--crayola);
   border: 1px solid var(--crayola);
   border-radius: 0.5rem;
