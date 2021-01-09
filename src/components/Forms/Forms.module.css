@@ -1,10 +1,10 @@
 .Container {
   width: 90vw;
-  max-width: 25rem;
+  max-width: 30rem;
   background-color: var(--white);
   box-shadow: 5px 5px 15px 0px #000000;
   color: var(--cadet);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   font-style: italic;
   font-weight: bold;
   text-align: center;
@@ -31,10 +31,12 @@
 
 .Message {
   margin-top: 1rem;
+  color: var(--sienna);
+  /* visibility: hidden; */
 }
 
 .Show {
-  color: var(--sienna);
+  visibility: visible;
 }
 
 .Form {
@@ -45,4 +47,5 @@
 
 button {
   width: 100%;
+  margin-top: 3rem;
 }

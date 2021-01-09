@@ -8,10 +8,6 @@
   margin-bottom: 2rem;
 }
 
-.Input:last-of-type {
-  margin-bottom: 4rem;
-}
-
 .Input::placeholder {
   font-style: italic;
   color: var(--cadet);

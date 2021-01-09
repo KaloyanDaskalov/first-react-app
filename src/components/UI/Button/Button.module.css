@@ -1,7 +1,7 @@
 .Btn {
   background-color: var(--crayola);
   border: 1px solid var(--crayola);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   font-size: 1.35rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
