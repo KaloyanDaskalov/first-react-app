@@ -5,7 +5,6 @@
   border: none;
   border-bottom: 2px solid var(--crayola);
   font-size: 1.2rem;
-  margin-bottom: 2rem;
 }
 
 .Input::placeholder {

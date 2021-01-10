@@ -32,7 +32,7 @@
 .Message {
   margin-top: 1rem;
   color: var(--sienna);
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 
 .Show {
@@ -48,4 +48,17 @@
 button {
   width: 100%;
   margin-top: 3rem;
+}
+
+input:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.Instructions {
+  margin-top: 0.5rem;
+}
+
+.Instructions::before {
+  content: "*";
+  margin-right: 0.5rem;
 }

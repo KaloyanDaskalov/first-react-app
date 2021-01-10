@@ -25,7 +25,7 @@ const Signup = () => {
             <Input getValue={(e) => setEmail(e.target.value)} showError={false} attributes={{ type: 'text', placeholder: 'Email' }} />
             <Input getValue={(e) => setPassword(e.target.value)} showError attributes={{ type: 'password', placeholder: 'Password' }} />
             <Input getValue={(e) => setConfirm(e.target.value)} showError attributes={{ type: 'password', placeholder: 'Confirm Password' }} />
-            <p className={classes.Instructions}>Password must be at least 6 characters</p>
+            <p className={classes.Instructions}>Password must be at least 6 characters long</p>
             <Button>Sign Up</Button>
         </form>
     </div>);
