@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './Forms.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { emailValidation } from '../../sharedTools/index';
+import useFormState from '../../store/formState';
 
 const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, password, dispatch] = useFormState();
 
     const submitHandler = (event) => {
         event.preventDefault();
         console.log(emailValidation(email), emailValidation(password));
+        console.log(email, password);
     }
 
     return (
@@ -23,8 +24,8 @@ const SignIn = () => {
                 <p className={classes.Message}>Error Message</p>
             </header>
             <form className={classes.Form} onSubmit={submitHandler}>
-                <Input getValue={(e) => setEmail(e.target.value)} showError attributes={{ type: 'text', placeholder: 'Email' }} />
-                <Input getValue={(e) => setPassword(e.target.value)} showError attributes={{ type: 'password', placeholder: 'Password' }} />
+                <Input getValue={(e) => dispatch({ type: 'Email', email: e.target.value })} showError attributes={{ type: 'text', placeholder: 'Email' }} />
+                <Input getValue={(e) => dispatch({ type: 'Password', password: e.target.value })} showError attributes={{ type: 'password', placeholder: 'Password' }} />
                 <Button>Sign In</Button>
             </form>
         </div>
