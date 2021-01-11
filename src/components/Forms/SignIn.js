@@ -4,14 +4,16 @@ import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import { emailValidation } from '../../sharedTools/index';
 import useFormState from '../../store/formState';
+import { useAuth } from '../../store/Auth';
 
 const SignIn = () => {
     const [email, password, dispatch] = useFormState();
+    const { isToken, isAuth, login, logout } = useAuth();
 
     const submitHandler = (event) => {
         event.preventDefault();
         console.log(emailValidation(email), emailValidation(password));
-        console.log(email, password);
+        console.log(isToken, isAuth(), login, logout);
     }
 
     return (
