@@ -8,12 +8,12 @@ const initialState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'Email':
-            return { ...state, email: action.email };
-        case 'Password':
-            return { ...state, password: action.password };
-        case 'Confirm':
-            return { ...state, confirm: action.confirm };
+        case 'EMAIL':
+            return { ...state, email: action.payload };
+        case 'PASSWORD':
+            return { ...state, password: action.payload };
+        case 'CONFIRM_PASSWORD':
+            return { ...state, confirm: action.payload };
         default:
             throw new Error('No reducer action');
     }

@@ -1,34 +1,33 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { auth } from '../config/firebase';
 
-const AuthContext = React.createContext({
-    isToken: '',
-    isAuth: () => { },
-    login: () => { },
-    logout: () => { }
-});
+const AuthContext = React.createContext();
 
 export function useAuth() {
     return useContext(AuthContext);
 }
 
 export default function AuthProvider({ children }) {
-    const [isToken, setIsToken] = useState('');
+    const [user, setUser] = useState(null);
 
-    const login = (token) => {
-        setIsToken(token);
-    };
-
-    const logout = () => {
-        setIsToken('');
-    };
-
-    const isAuth = () => {
-        return !!isToken;
+    function signup(email, password) {
+        auth.createUserWithEmailAndPassword(email, password);
     }
 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+        });
+        return unsubscribe;
+    }, []);
+
+    const context = {
+        user,
+        signup
+    };
 
     return (
-        <AuthContext.Provider value={{ isToken, isAuth, login, logout }} >
+        <AuthContext.Provider value={context} >
             {children}
         </AuthContext.Provider>
     );

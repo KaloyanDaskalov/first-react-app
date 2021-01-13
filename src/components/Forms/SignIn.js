@@ -8,12 +8,11 @@ import { useAuth } from '../../store/Auth';
 
 const SignIn = () => {
     const [email, password, dispatch] = useFormState();
-    const { isToken, isAuth, login, logout } = useAuth();
+    const { signup } = useAuth();
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         console.log(emailValidation(email), emailValidation(password));
-        console.log(isToken, isAuth(), login, logout);
     }
 
     return (

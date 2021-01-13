@@ -3,7 +3,7 @@ import Signup from "./Forms/Signup";
 import SignIn from "./Forms/SignIn";
 import classes from './App.module.css';
 
-const app = () => (<div className={classes.Background}><SignIn /></div>);
+const app = () => (<div className={classes.Background}><Signup /></div>);
 
 export default app;
 // class App extends Component {
