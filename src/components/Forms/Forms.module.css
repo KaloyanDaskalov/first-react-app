@@ -37,6 +37,7 @@
 
 .Show {
   visibility: visible;
+  text-transform: capitalize;
 }
 
 .Form {
