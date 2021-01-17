@@ -14,12 +14,12 @@ export default function AuthProvider({ children }) {
         auth.createUserWithEmailAndPassword(email, password);
     }
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            setUser(user);
-        });
-        return unsubscribe;
-    }, []);
+    // useEffect(() => {
+    //     const unsubscribe = auth.onAuthStateChanged(user => {
+    //         setUser(user);
+    //     });
+    //     return unsubscribe;
+    // }, []);
 
     const context = {
         user,
