@@ -28,7 +28,14 @@ const reducer = (state, action) => {
 function useFormState() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    return [state.email, state.password, dispatch, state.confirm, state.error, state.errorMessage];
+    return {
+        email: state.email,
+        password: state.password,
+        dispatch: dispatch,
+        confirm: state.confirm,
+        error: state.error,
+        errorMessage: state.errorMessage
+    };
 }
 
 export default useFormState;

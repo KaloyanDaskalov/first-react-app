@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useFormState from '../../store/formState';
 import { useAuth } from '../../store/Auth';
 import { actionType, emailValidation, checkLength, showErrorHandler } from '../../sharedTools/index';
 
-import classes from './Forms.module.css';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import ErrorMessage from '../UI/ErrorMessage/ErrorMessage';
+import ErrorMessageElement from '../UI/ErrorMessage/ErrorMessage';
+import classes from './Forms.module.css';
 
 
 const Signup = () => {
-    const [email, password, dispatch, confirm, error, errorMessage] = useFormState();
+    const { email, password, dispatch, confirm, error, errorMessage } = useFormState();
     const { signup } = useAuth();
 
     const submitHandler = async (event) => {
@@ -46,12 +46,21 @@ const Signup = () => {
             <p className={classes.HeaderMessage}>
                 Already a member? <a href="#" className={classes.HeaderLink}>Log In</a>
             </p>
-            <ErrorMessage showError={error} errorMessage={errorMessage} />
+            <ErrorMessageElement showError={error} errorMessage={errorMessage} />
         </header>
         <form className={classes.Form} onSubmit={submitHandler} >
-            <Input getValue={inputHandler} showError={showErrorHandler(error, errorMessage, 'email')} attributes={{ type: 'text', placeholder: 'Email' }} />
-            <Input getValue={inputHandler} showError={showErrorHandler(error, errorMessage, 'password')} attributes={{ type: 'password', placeholder: 'Password' }} />
-            <Input getValue={inputHandler} showError={showErrorHandler(error, errorMessage, 'password')} attributes={{ type: 'password', placeholder: 'Confirm Password' }} />
+            <Input
+                getValue={inputHandler}
+                showError={showErrorHandler(error, errorMessage, 'email')}
+                attributes={{ type: 'text', placeholder: 'Email' }} />
+            <Input
+                getValue={inputHandler}
+                showError={showErrorHandler(error, errorMessage, 'password')}
+                attributes={{ type: 'password', placeholder: 'Password' }} />
+            <Input
+                getValue={inputHandler}
+                showError={showErrorHandler(error, errorMessage, 'password')}
+                attributes={{ type: 'password', placeholder: 'Confirm Password' }} />
             <p className={classes.Instructions}>Password must be at least 6 characters long</p>
             <Button>Sign Up</Button>
         </form>
