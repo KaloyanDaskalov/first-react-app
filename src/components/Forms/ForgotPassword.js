@@ -1,18 +1,17 @@
 import React from 'react';
 import useFormState from '../../store/formState';
-import { actionType, emailValidation, checkLength, showErrorHandler } from '../../sharedTools/index';
+import { actionType, emailValidation, showErrorHandler } from '../../sharedTools/index';
 import { useAuth } from '../../store/Auth';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import ErrorMessageElement from '../UI/ErrorMessage/ErrorMessage'
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import classes from './Forms.module.css';
 
-const SignIn = () => {
-    const { email, password, dispatch, error, errorMessage } = useFormState();
-    const { signIn } = useAuth();
-    const history = useHistory();
+const ForgotPassword = () => {
+    const { email, dispatch, error, errorMessage } = useFormState();
+    const { resetPassword } = useAuth();
 
     const submitHandler = async (event) => {
         event.preventDefault();
@@ -23,12 +22,9 @@ const SignIn = () => {
             return dispatch({ type: 'ERROR', payload: 'invalid email' });
         }
 
-        if (!checkLength(6, 10, password.length)) {
-            return dispatch({ type: 'ERROR', payload: 'password must be at least 6 characters long' });
-        }
         try {
-            await signIn(email, password);
-            history.push('/');
+            await resetPassword(email);
+            dispatch({ type: 'ERROR', payload: 'Success! check your mail for further instructions' });
         } catch (err) {
             dispatch({ type: 'ERROR', payload: err.message });
         }
@@ -41,10 +37,7 @@ const SignIn = () => {
     return (
         <div className={classes.Container} >
             <header className={classes.Header}>
-                <h2 className={classes.Heading}>Sign In</h2>
-                <p className={classes.HeaderMessage}>
-                    Not a member? <Link to="/signup" className={classes.HeaderLink}>Sign Up Now</Link>
-                </p>
+                <h2 className={classes.Heading}>Password Reset</h2>
                 <ErrorMessageElement showError={error} errorMessage={errorMessage} />
             </header>
             <form className={classes.Form} onSubmit={submitHandler}>
@@ -52,17 +45,13 @@ const SignIn = () => {
                     getValue={inputHandler}
                     showError={showErrorHandler(error, errorMessage, 'email')}
                     attributes={{ type: 'text', placeholder: 'Email' }} />
-                <Input
-                    getValue={inputHandler}
-                    showError={showErrorHandler(error, errorMessage, 'password')}
-                    attributes={{ type: 'password', placeholder: 'Password' }} />
-                <Button>Sign In</Button>
+                <Button>Reset Password</Button>
                 <p className={classes.HeaderMessage} style={{ marginTop: '2rem' }}>
-                    <Link to="/forgot-password" className={classes.HeaderLink}>Forgot Password</Link>
+                    <Link to="/signin" className={classes.HeaderLink}>Sign In</Link>
                 </p>
             </form>
         </div>
     );
 }
 
-export default SignIn;
+export default ForgotPassword;

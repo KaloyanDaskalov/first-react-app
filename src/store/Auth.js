@@ -8,27 +8,57 @@ export function useAuth() {
 }
 
 export default function AuthProvider({ children }) {
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
     function signup(email, password) {
-        auth.createUserWithEmailAndPassword(email, password);
+        // return promise 
+        return auth.createUserWithEmailAndPassword(email, password);
     }
 
-    // useEffect(() => {
-    //     const unsubscribe = auth.onAuthStateChanged(user => {
-    //         setUser(user);
-    //     });
-    //     return unsubscribe;
-    // }, []);
+    function signIn(email, password) {
+        return auth.signInWithEmailAndPassword(email, password);
+    }
+
+    function signOut() {
+        return auth.signOut();
+    }
+
+    function resetPassword(email) {
+        return auth.sendPasswordResetEmail(email);
+    }
+
+    function updateEmail(email) {
+        user.updateEmail(email);
+    }
+
+    function updatePassword(password) {
+        user.updatePassword(password);
+    }
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+            setLoading(false);
+        });
+        return unsubscribe;
+    }, []);
 
     const context = {
         user,
-        signup
+        signup,
+        signIn,
+        signOut,
+        resetPassword,
+        updateEmail,
+        updatePassword
     };
+
+    // render children after user Authorization check
 
     return (
         <AuthContext.Provider value={context} >
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     );
 }
